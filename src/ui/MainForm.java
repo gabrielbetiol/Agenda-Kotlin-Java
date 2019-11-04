@@ -1,9 +1,14 @@
 package ui;
 
+import bussiness.ContactBussiness;
+import entity.ContactEntity;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MainForm extends JFrame {
 
@@ -11,6 +16,8 @@ public class MainForm extends JFrame {
     private JButton btnNewContact;
     private JButton btnRemove;
     private JTable tableContacts;
+
+    private ContactBussiness mContactBussiness = new ContactBussiness();
 
     public MainForm(){
 
@@ -24,6 +31,7 @@ public class MainForm extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // Ao fechar a janela, encerra a aplicação
 
         setListeners();
+        loadContacts();
 
     }
 
@@ -43,5 +51,11 @@ public class MainForm extends JFrame {
 
             }
         });
+    }
+
+    private void loadContacts(){
+        List<ContactEntity> contactList = mContactBussiness.getList();
+
+        DefaultTableModel model = new DefaultTableModel(); //terminar
     }
 }
